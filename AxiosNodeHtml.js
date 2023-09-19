@@ -2,13 +2,13 @@
 //require: npm install express ejs axios body-parser
 
 const express = require('express');
-const acios = require('axios');
+const axios = require('axios');
 const app = express();
 var bodyParser = require('body-parser');
 
 // Base URL for the API
 //const base_url = "https://api.example.com";
-const base_url = "http://localhost:3000";
+const base_url = "http://localhost:5000";
 
 // Set the template engine
 app.set('view engine', 'ejs');
@@ -21,7 +21,7 @@ app.use(express.static(__dirname + 'public'));
 app.get('/', async (req, res) => {
     try {
         const response = await axios.get(base_url + '/books');
-        res.render('index', { books: response.data });
+        res.render('books', { books: response.data });
     } catch (err) {
         console.error(err);
         res.status(500).send('Error');

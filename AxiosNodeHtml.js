@@ -6,6 +6,7 @@ const axios = require('axios');
 const app = express();
 var bodyParser = require('body-parser');
 
+
 // Base URL for the API
 //const base_url = "https://api.example.com";
 const base_url = "http://localhost:5000";
@@ -17,6 +18,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Serve static files
 app.use(express.static(__dirname + 'public'));
+
+app.use("/public", express.static('./public/'));
 
 app.get('/', async (req, res) => {
     try {
